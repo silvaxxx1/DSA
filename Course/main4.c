@@ -57,7 +57,7 @@ int main() {
     printf("strcspn: First digit occurs at index: %zu\n", index);
 
     // 4. strspn – Count characters that ONLY belong to a set
-    size_t span = strspn(sample, "helo, ");  // characters in beginning part
+    size_t span = strspn(sample, "hello,");  // characters in beginning part
     printf("strspn: Initial characters only from \"helo, \": %zu\n", span);
 
     // 5. strpbrk – First match of any character from a set
