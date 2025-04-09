@@ -28,6 +28,8 @@ int main() {
         "John Doe", 35, {"123 Main St", "New York", "USA"}
     };
 
+ 
+
     // Print the details of the person
     printPersonDetails(&person1);
 
