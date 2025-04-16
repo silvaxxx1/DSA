@@ -1,48 +1,63 @@
 #include <stdio.h>
-#include <limits.h>  // For CHAR_BIT constant
+#include <limits.h>  // For CHAR_BIT, which defines the number of bits in a byte (usually 8)
 
-// Function to display the binary representation of any integer (signed or unsigned)
+// -------------------------------------------------------------
+// Function: displayBits
+// Purpose : To print the binary (bit-level) representation of any integer
+// Arguments:
+//   - value: a pointer to the integer (can be any type, signed or unsigned)
+//   - size : the size of the data type (in bytes) so the function knows how many bytes to read
+// -------------------------------------------------------------
 void displayBits(void *value, size_t size) {
-    // Create a pointer to the value to interpret it as an unsigned char array (byte-by-byte)
+    // Cast the generic void pointer to an unsigned char pointer.
+    // This allows us to access the value byte-by-byte.
     unsigned char *ptr = (unsigned char *) value;
-    
-    // Loop through each byte of the integer (size gives the number of bytes)
-    for (size_t byte = 0; byte < size; ++byte) {
-        unsigned char mask = 1 << (CHAR_BIT * sizeof(unsigned char) - 1); // Mask to check each bit in the byte
 
-        // Loop through each bit in the byte (8 bits per byte)
+    // Loop through each byte of the value.
+    // We go from byte 0 to byte (size - 1)
+    for (size_t byte = 0; byte < size; ++byte) {
+        
+        // Create a mask to check each bit in the byte, starting from the most significant bit (MSB)
+        // CHAR_BIT is usually 8, so this creates a mask like 10000000 (in binary)
+        unsigned char mask = 1 << (CHAR_BIT - 1);
+
+        // Now check each bit in this byte
         for (int bit = 0; bit < CHAR_BIT; ++bit) {
-            // Use bitwise AND to check if the current bit is 1 or 0
+
+            // If the current bit is set (1), print '1', otherwise print '0'
             putchar(ptr[byte] & mask ? '1' : '0');
 
-            // Shift the mask to the right to check the next bit
+            // Move the mask one bit to the right
             mask >>= 1;
         }
 
-        // Print space after each byte for readability
+        // Print a space after each byte for easier readability
         putchar(' ');
     }
+
+    // Newline after printing all bits
     putchar('\n');
 }
 
 int main() {
-    unsigned int u_num = 123;     // Example unsigned integer (positive value)
-    int num = -123;               // Example signed integer (negative value)
+    // Declare an unsigned integer with a positive value
+    unsigned int u_num = 123;
 
-    // Display binary representation of unsigned int
+    // Declare a signed integer with a negative value
+    int num = -123;
+
+    // ------------------ Output: Unsigned Integer ------------------
     printf("Binary representation of unsigned int %u:\n", u_num);
+
+    // Pass the address of u_num and its size to the displayBits function
     displayBits(&u_num, sizeof(u_num));
 
-    // Display binary representation of signed int
+    // ------------------ Output: Signed Integer --------------------
     printf("Binary representation of signed int %d:\n", num);
+
+    // Pass the address of num and its size to the displayBits function
+    // This will show how negative numbers are stored using two's complement
     displayBits(&num, sizeof(num));
 
     return 0;
 }
-// This code demonstrates how to display the binary representation of both signed and unsigned integers.
-// The `displayBits` function takes a pointer to the value and its size in bytes, allowing it to handle any integer type.
-// The main function shows how to call this function for both unsigned and signed integers, providing a clear output of their binary forms.
-// The output will show the binary representation of the numbers, with each byte separated by a space for clarity.
-// The code uses bitwise operations to check each bit of the integer and prints '1' or '0' accordingly.
-// The `CHAR_BIT` constant is used to determine the number of bits in a byte, ensuring compatibility across different platforms.
-// The code is designed to be portable and works with any integer type, making it a versatile tool for bit manipulation and display.
