@@ -1,4 +1,0 @@
-1001 Alice 2000.00
-1002 Bob -150.50
-1003 Carol 500.00
-My name is Yamin
