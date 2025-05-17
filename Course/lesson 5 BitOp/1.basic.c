@@ -5,10 +5,11 @@ int main() {
     int a = 5;  // In binary: 0101
     int b = 3;  // In binary: 0011
 
+
     // 1. Bitwise AND (&)
     // Bitwise AND compares each bit of the operands and results in 1 only if both corresponding bits are 1.
     // 0101 (a)  
-    // 0011 (b)
+    // 0011 (b) 
     // ----
     // 0001 (result)
     int and_result = a & b;

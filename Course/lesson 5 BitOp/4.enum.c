@@ -4,7 +4,7 @@
 // An enum is a user-defined type that consists of a set of named integer constants.
 // Enums make code more readable by using meaningful names instead of raw numbers.
 enum Weekday {
-    Sunday = 0,    // Sunday is assigned the value 0 (default for first item if no value is specified)
+    Sunday,    // Sunday is assigned the value 0 (default for first item if no value is specified)
     Monday,        // Monday gets the value 1
     Tuesday,       // Tuesday gets the value 2
     Wednesday,     // Wednesday gets the value 3
