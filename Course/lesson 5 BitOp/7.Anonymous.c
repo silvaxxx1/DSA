@@ -9,7 +9,7 @@ struct Employee {
     int id; // An integer field 'id' to store the employee's ID.
 
     // Anonymous struct definition (no tag name)
-    struct {
+    struct  {
         char city[20];    // City name (max 19 chars + '\0')
         char country[20]; // Country name (max 19 chars + '\0')
     }; 
