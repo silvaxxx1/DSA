@@ -27,8 +27,8 @@ int main() {
 
     // Assign values to the bit fields of the card
     card.face = 10;   // Value 10, typically represents Jack
-    card.suit = 12;    // Suit 2, let's say Clubs
-    card.color = 0;   // Color 1, representing Black
+    card.suit = 2;    // Suit 2, let's say Clubs
+    card.color = 1;   // Color 1, representing Black
 
     // -------------------------------------------------------------
     // Print the card's properties

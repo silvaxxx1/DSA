@@ -63,7 +63,7 @@ int main() {
 
     // Second code block: Bitwise assignment operations
     int c = 6;  // Binary: 0110
-
+ 
     // Bitwise AND assignment
     // 0110 & 0011 = 0010 => 2
     c &= 3;  
@@ -81,7 +81,6 @@ int main() {
 
     // Bitwise Left Shift assignment
     // 0011 << 1 = 0110 => 6 (multiplies by 2)
-    c <<= 1;
     printf("c <<= 1: %d\n", c);  // Output: 6
 
     // Bitwise Right Shift assignment
